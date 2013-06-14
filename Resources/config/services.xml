@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="qimnet.table.factory.class">Qimnet\TableBundle\Table\TableFactory</parameter>
+        <parameter key="qimnet.table.builder.factory.class">Qimnet\TableBundle\Table\TableBuilderFactory</parameter>
+        <parameter key="qimnet.table.view.factory.class">Qimnet\TableBundle\Table\TableViewFactory</parameter>
+        <parameter key="qimnet.table.type.registry.class">Qimnet\TableBundle\Table\TableTypeRegistry</parameter>
+        <parameter key="qimnet.table.renderer.class">Qimnet\TableBundle\Templating\TableRenderer</parameter>
+        <parameter key="qimnet.table.renderer.boolean.class">Qimnet\TableBundle\Templating\BooleanRendererStrategy</parameter>
+        <parameter key="qimnet.table.renderer.date.class">Qimnet\TableBundle\Templating\DateRendererStrategy</parameter>
+        <parameter key="qimnet.table.renderer.translated.class">Qimnet\TableBundle\Templating\TranslatedRendererStrategy</parameter>
+        <parameter key="qimnet.table.renderer.text.class">Qimnet\TableBundle\Templating\TextRendererStrategy</parameter>
+        <parameter key="qimnet.table.renderer.link.class">Qimnet\TableBundle\Templating\TextRendererStrategy</parameter>
+        <parameter key="qimnet.table.builder.default_class">Qimnet\TableBundle\Table\TableBuilder</parameter>
+        <parameter key="qimnet.table.default_class">Qimnet\TableBundle\Table\Table</parameter>
+        <parameter key="qimnet.table.view.default_class">Qimnet\TableBundle\Table\TableView</parameter>
+    </parameters>
+
+    <services>
+        <service id="qimnet.table.type.registry" class="%qimnet.table.type.registry.class%">
+            <argument type="service" id="service_container" />
+        </service>
+
+        <service id="qimnet.table.builder.factory" class="%qimnet.table.builder.factory.class%">
+            <argument type="service" id="qimnet.table.type.registry" />
+            <argument type="service" id="qimnet.table.factory" />
+            <argument>%qimnet.table.builder.default_class%</argument>
+        </service>
+
+        <service id="qimnet.table.factory" class="%qimnet.table.factory.class%" public="false">
+            <argument type="service" id="qimnet.table.view.factory" />
+            <argument>%qimnet.table.default_class%</argument>
+        </service>
+
+        <service id="qimnet.table.view.factory" class="%qimnet.table.view.factory.class%" public="false">
+            <argument type="service" id="property_accessor" />
+            <argument type="service" id="qimnet.table.renderer" />
+            <argument>%qimnet.table.view.default_class%</argument>
+        </service>
+
+        <service id="qimnet.table.renderer" class="%qimnet.table.renderer.class%" public="false">
+            <argument>%qimnet.table.view.header_renderer%</argument>
+        </service>
+
+        <service id="qimnet.table.renderer.strategy_decorator" abstract="true">
+            <argument type="service" id="qimnet.table.renderer" />
+        </service>
+
+        <service id="qimnet.table.renderer.link" class="%qimnet.table.renderer.link.class%" parent="qimnet.table.renderer.strategy_decorator" public="false">
+            <tag name="qimnet.table.renderer" />
+        </service>
+        
+        <service id="qimnet.table.renderer.boolean" class="%qimnet.table.renderer.boolean.class%" public="false">
+            <argument type="service" id="translator.default" />
+            <tag name="qimnet.table.renderer" />
+        </service>
+
+        <service id="qimnet.table.renderer.date" class="%qimnet.table.renderer.date.class%" public="false">
+            <argument type="service" id="translator.default" />
+            <tag name="qimnet.table.renderer" />
+        </service>
+
+        <service id="qimnet.table.renderer.text" class="%qimnet.table.renderer.text.class%" public="false">
+            <tag name="qimnet.table.renderer" />
+        </service>
+
+        <service id="qimnet.table.renderer.translated" class="%qimnet.table.renderer.translated.class%" public="false">
+            <argument type="service" id="translator.default" />
+            <tag name="qimnet.table.renderer" />
+        </service>
+    </services>
+</container>
