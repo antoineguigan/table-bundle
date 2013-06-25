@@ -52,7 +52,7 @@
         <service id="qimnet.table.renderer.link" class="%qimnet.table.renderer.link.class%" parent="qimnet.table.renderer.strategy_decorator" public="false">
             <tag name="qimnet.table.renderer" />
         </service>
-        
+
         <service id="qimnet.table.renderer.boolean" class="%qimnet.table.renderer.boolean.class%" public="false">
             <argument type="service" id="translator.default" />
             <tag name="qimnet.table.renderer" />

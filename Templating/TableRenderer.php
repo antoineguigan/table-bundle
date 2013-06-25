@@ -41,11 +41,12 @@ class TableRenderer implements TableRendererInterface
             krsort($sort);
             $this->sorted = array();
             foreach ($sort as $strategies) {
-                foreach($strategies as $strategy) {
+                foreach ($strategies as $strategy) {
                     $this->sorted[] = $strategy;
                 }
             }
         }
+
         return $this->sorted;
     }
     public function render($value, array $options=array())

@@ -9,7 +9,6 @@
  */
 namespace Qimnet\TableBundle\Table;
 
-
 /**
  * Constants for CRUD Bundle actions
  */

@@ -27,6 +27,7 @@ class Configuration implements ConfigurationInterface
                     ->defaultValue('translated')
                 ->end()
             ->end();
+
         return $treeBuilder;
     }
 }
