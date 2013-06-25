@@ -25,7 +25,7 @@ class TableRendererTest extends \PHPUnit_Framework_TestCase
             'can_render'=>true,
             'success'=>true
         );
-        $strategy = $this->getMock('Qimnet\TableBundle\Table\Renderer\TableRendererStrategyInterface');
+        $strategy = $this->getMock('Qimnet\TableBundle\Templating\TableRendererStrategyInterface');
         $strategy->expects($this->any())
                 ->method('getPriority')
                 ->will($this->returnValue($options['priority']));

@@ -24,7 +24,7 @@ class TableViewFactoryTest extends \PHPUnit_Framework_TestCase
         $this->pathGenerator = $this->getMock('Qimnet\TableBundle\Routing\PathGeneratorInterface');
         $this->securityContext = $this->getMock('Qimnet\TableBundle\Security\SecurityContextInterface');
         $this->propertyAccessor = $this->getMock('Symfony\Component\PropertyAccess\PropertyAccessorInterface');
-        $this->tableRenderer = $this->getMock('Qimnet\TableBundle\Table\Renderer\TableRendererInterface');
+        $this->tableRenderer = $this->getMock('Qimnet\TableBundle\Templating\TableRendererInterface');
         $this->factory = new TableViewFactory($this->propertyAccessor, $this->tableRenderer, 'table_view_default_test_class');
     }
     protected function setupClass($class)
