@@ -8,17 +8,9 @@
  * with this source code in the file LICENSE.
  */
 namespace Qimnet\TableBundle\Table;
-use Qimnet\TableBundle\Routing\PathGeneratorInterface;
-use Qimnet\TableBundle\Security\SecurityContextInterface;
-use Qimnet\TableBundle\Table\Action;
 
 interface TableInterface
 {
-    public function createView(
-            PathGeneratorInterface $pathGenerator,
-            SecurityContextInterface $securityContext,
-            $sortField,
-            $sortDirection,
-            $mainAction=  Action::UPDATE);
+    public function createView(array $headerRendererOptions=array(), $class='');
     public function getColumnSort($columnName);
 }

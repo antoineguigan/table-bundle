@@ -10,9 +10,6 @@
 
 namespace Qimnet\TableBundle\Table;
 
-use Qimnet\TableBundle\Routing\PathGeneratorInterface;
-use Qimnet\TableBundle\Security\SecurityContextInterface;
-use Qimnet\TableBundle\Table\Action;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 use Qimnet\TableBundle\Templating\TableRendererInterface;
 
@@ -30,14 +27,7 @@ class TableViewFactory implements TableViewFactoryInterface
         $this->propertyAccessor = $propertyAccessor;
         $this->renderer = $renderer;
     }
-    public function create(
-            array $columns,
-            PathGeneratorInterface $pathGenerator,
-            SecurityContextInterface $securityContext,
-            $sortField,
-            $sortDirection,
-            $mainAction=  Action::UPDATE,
-            $class='')
+    public function create(array $columns, array $headerRendererOptions=array(), $class='')
     {
         if (!$class) {
             $class = $this->defaultClass;
@@ -47,10 +37,6 @@ class TableViewFactory implements TableViewFactoryInterface
                 $this->propertyAccessor,
                 $this->renderer,
                 $columns,
-                $pathGenerator,
-                $securityContext,
-                $sortField,
-                $sortDirection,
-                $mainAction);
+                $headerRendererOptions);
     }
 }

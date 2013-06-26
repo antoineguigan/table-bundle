@@ -9,18 +9,7 @@
  */
 namespace Qimnet\TableBundle\Table;
 
-use Qimnet\TableBundle\Routing\PathGeneratorInterface;
-use Qimnet\TableBundle\Security\SecurityContextInterface;
-use Qimnet\TableBundle\Table\Action;
-
 interface TableViewFactoryInterface
 {
-    public function create(
-            array $columns,
-            PathGeneratorInterface $pathGenerator,
-            SecurityContextInterface $securityContext,
-            $sortField,
-            $sortDirection,
-            $mainAction=  Action::UPDATE,
-            $class='');
+    public function create(array $columns, array $headerRendererOptions=array(), $class='');
 }

@@ -13,12 +13,7 @@ class TableRenderer implements TableRendererInterface
 {
     private $strategies=array();
     private $sorted;
-    private $headerStrategy;
 
-    public function __construct($headerStrategy)
-    {
-        $this->headerStrategy = $headerStrategy;
-    }
     public function addStrategy(TableRendererStrategyInterface $strategy)
     {
         $this->strategies[$strategy->getName()] = $strategy;
@@ -66,14 +61,5 @@ class TableRenderer implements TableRendererInterface
         }
 
         return $strategy->render($value, $options);
-    }
-    public function renderSortLink($label, $classes='', $sortUrl='')
-    {
-        $label = $this->render($label, array('type'=>$this->headerStrategy));
-        if (!$sortUrl) {
-            return "<span class=\"$classes\">$label</span>";
-        } else {
-            return '<a href="' . htmlspecialchars($sortUrl) . "\" class=\"$classes\">$label</a>";
-        }
     }
 }

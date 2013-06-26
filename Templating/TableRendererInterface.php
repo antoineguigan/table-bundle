@@ -13,5 +13,4 @@ interface TableRendererInterface
 {
     public function addStrategy(TableRendererStrategyInterface $strategy);
     public function render($value, array $options=array());
-    public function renderSortLink($label, $classes='', $sortUrl='');
 }

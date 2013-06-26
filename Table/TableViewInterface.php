@@ -11,15 +11,7 @@ namespace Qimnet\TableBundle\Table;
 interface TableViewInterface
 {
     public function getColumnNames();
-    public function getSortColumns();
-    public function getMainUrl($entity, array $objectVars=array(), array $parameters=array());
-    public function getDeleteUrl($entity, array $objectVars=array(), array $parameters=array());
     public function getColumnLabel($columnName);
-    public function getNewAllowed();
-    public function getMainActionAllowed($entity, $objectVars);
-    public function getEditAllowed($entity, $objectVars);
-    public function getDeleteAllowed($entity, $objectVars);
-    public function getBatchActionsAllowed($entity, $objectVars);
-    public function renderSortLink($columnName);
+    public function renderHeader($columnName);
     public function render($entity, $objectVars, $columnName);
 }

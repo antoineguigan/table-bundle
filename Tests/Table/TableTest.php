@@ -23,23 +23,15 @@ class TableTest extends \PHPUnit_Framework_TestCase
     }
     public function testCreateView()
     {
-        $pathGenerator = $this->getMock('Qimnet\TableBundle\Routing\PathGeneratorInterface');
-        $securityContext = $this->getMock('Qimnet\TableBundle\Security\SecurityContextInterface');
         $table = $this->createTable(array('key1'=>'value1'));
         $this->viewFactory
                 ->expects($this->once())
                 ->method('create')
                 ->with(
-                        $this->equalTo(array('key1'=>'value1')),
-                        $this->identicalTo($pathGenerator),
-                        $this->identicalTo($securityContext),
-                        $this->equalTo('sort_field'),
-                        $this->equalTo('sort_direction'),
-                        $this->equalTo('main_action')
+                        $this->equalTo(array('key1'=>'value1'))
                         )
                 ->will($this->returnValue('success'));
-        $this->assertEquals('success',
-                $table->createView($pathGenerator, $securityContext, 'sort_field', 'sort_direction', 'main_action'));
+        $this->assertEquals('success',$table->createView());
     }
     public function testGetColumnSort()
     {

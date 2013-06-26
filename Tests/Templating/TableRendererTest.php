@@ -89,20 +89,4 @@ class TableRendererTest extends \PHPUnit_Framework_TestCase
         $this->renderer->render('value',array());
     }
 
-    public function getRenderSortLinkData()
-    {
-        return array(
-            array(false, '<span class="classes">success</span>'),
-            array('url', '<a href="url" class="classes">success</a>')
-        );
-    }
-
-    /**
-     * @dataProvider getRenderSortLinkData
-     */
-    public function testRenderSortLink($sortUrl, $result)
-    {
-        $this->renderer->addStrategy($this->getMockStrategy(array('type'=>'header_strategy'), array('type'=>'header_strategy')));
-        $this->assertEquals($result, $this->renderer->renderSortLink('value', 'classes', $sortUrl));
-    }
 }

@@ -8,9 +8,6 @@
  * with this source code in the file LICENSE.
  */
 namespace Qimnet\TableBundle\Table;
-use Qimnet\TableBundle\Routing\PathGeneratorInterface;
-use Qimnet\TableBundle\Security\SecurityContextInterface;
-use Qimnet\TableBundle\Table\Action;
 
 class Table implements TableInterface
 {
@@ -28,20 +25,9 @@ class Table implements TableInterface
         $this->viewFactory = $viewFactory;
     }
 
-    public function createView(
-            PathGeneratorInterface $pathGenerator,
-            SecurityContextInterface $securityContext,
-            $sortField,
-            $sortDirection,
-            $mainAction=  Action::UPDATE)
+    public function createView(array $headerRendererOptions=array(), $class='')
     {
-        return $this->viewFactory->create(
-                $this->columns,
-                $pathGenerator,
-                $securityContext,
-                $sortField,
-                $sortDirection,
-                $mainAction);
+        return $this->viewFactory->create($this->columns, $headerRendererOptions, $class);
     }
     public function getColumnSort($columnName)
     {
