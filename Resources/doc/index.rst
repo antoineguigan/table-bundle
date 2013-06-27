@@ -42,7 +42,7 @@ Defining a table type
 To define a new table types, implement the ``Qimnet\Table\TableType`` interface.
 Qimnet tables work quite similarily to Symfony forms :
 
-.. code-block: php
+.. code-block:: php
 
     <?php
 
@@ -88,7 +88,7 @@ Rendering data with a table type
 
 Use the ``qimnet.table.builder.factory`` service to create a table in your controller
 
-.. code-block: php
+.. code-block:: php
 
     <?php
     namespace ACME\WebsiteBundle\Controller;
@@ -114,7 +114,8 @@ Use the ``qimnet.table.builder.factory`` service to create a table in your contr
 
 The table can then be rendered in the template:
 
-.. code-block: twig
+.. code-block:: twig
+
     {# ACMEWebsiteBundle:Table:table.html.twig #}
     {# ... #}
     <table>
