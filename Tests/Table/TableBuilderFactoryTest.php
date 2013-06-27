@@ -27,21 +27,18 @@ class TableBuilderFactoryTest  extends \PHPUnit_Framework_TestCase
     {
         $this->getMockForAbstractClass('Qimnet\TableBundle\Table\TableBuilder', array(
             $this->tableFactory,
-            'entity_alias'
         ), $class);
     }
     public function testCreate()
     {
         $this->setupClass('table_builder_default_class');
         $this->assertInstanceOf('table_builder_default_class', $this->factory->create(
-                'entity_alias',
                 'table_builder_default_class'));
     }
     public function testCreateWithDefaultClass()
     {
         $this->setupClass('table_builder_default_test_class');
-        $this->assertInstanceOf('table_builder_default_test_class', $this->factory->create(
-                'entity_alias'));
+        $this->assertInstanceOf('table_builder_default_test_class', $this->factory->create());
     }
     protected function getMockTableType($class)
     {
@@ -65,7 +62,7 @@ class TableBuilderFactoryTest  extends \PHPUnit_Framework_TestCase
                 ->method('has')
                 ->with($this->equalTo('table_builder_default_type_test_type_class'))
                 ->will($this->returnValue(false));
-        $this->assertInstanceOf('table_builder_default_type_test_class', $this->factory->createFromType('table_builder_default_type_test_type_class', 'entity_alias', 'table_builder_default_type_test_class'));
+        $this->assertInstanceOf('table_builder_default_type_test_class', $this->factory->createFromType('table_builder_default_type_test_type_class', 'table_builder_default_type_test_class'));
     }
 
     public function testCreateFromTypeService()
@@ -82,12 +79,12 @@ class TableBuilderFactoryTest  extends \PHPUnit_Framework_TestCase
                 ->method('get')
                 ->with($this->equalTo('service'))
                 ->will($this->returnValue($type));
-        $this->assertInstanceOf('table_builder_default_type_test_named_class', $this->factory->createFromType('service', 'entity_alias', 'table_builder_default_type_test_named_class'));
+        $this->assertInstanceOf('table_builder_default_type_test_named_class', $this->factory->createFromType('service', 'table_builder_default_type_test_named_class'));
     }
     public function testCreateFromTypeObject()
     {
         $this->setupClass('table_builder_default_type_test_object_class');
         $type = $this->getMockTableType('table_builder_default_type_test_object_class');
-        $this->assertInstanceOf('table_builder_default_type_test_object_class', $this->factory->createFromType($type, 'entity_alias', 'table_builder_default_type_test_object_class'));
+        $this->assertInstanceOf('table_builder_default_type_test_object_class', $this->factory->createFromType($type, 'table_builder_default_type_test_object_class'));
     }
 }

@@ -22,7 +22,6 @@ class TableFactory implements TableFactoryInterface
 
     public function create(
             array $columns,
-            $entityAlias = 't',
             $class = '')
     {
         if (!$class) {
@@ -31,7 +30,6 @@ class TableFactory implements TableFactoryInterface
 
         return new $class(
                 $this->viewFactory,
-                $columns,
-                $entityAlias);
+                $columns);
     }
 }

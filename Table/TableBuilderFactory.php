@@ -24,9 +24,9 @@ class TableBuilderFactory  implements TableBuilderFactoryInterface
         $this->defaultClass = $defaultClass;
         $this->tableFactory = $tableFactory;
     }
-    public function createFromType($type, $entityAlias='t', $class='')
+    public function createFromType($type, $class='')
     {
-        $builder = $this->create($entityAlias,$class);
+        $builder = $this->create($class);
         if (is_string($type)) {
             if ($this->typeRegistry->has($type)) {
                 $type = $this->typeRegistry->get($type);
@@ -39,14 +39,12 @@ class TableBuilderFactory  implements TableBuilderFactoryInterface
         return $builder;
     }
 
-    public function create($entityAlias='t', $class='')
+    public function create($class='')
     {
         if (!$class) {
             $class = $this->defaultClass;
         }
 
-        return new $class(
-                $this->tableFactory,
-                $entityAlias);
+        return new $class($this->tableFactory);
     }
 }

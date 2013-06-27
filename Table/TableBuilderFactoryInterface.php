@@ -11,7 +11,7 @@ namespace Qimnet\TableBundle\Table;
 
 interface TableBuilderFactoryInterface
 {
-    public function create($entityAlias='t', $class='');
+    public function create($class='');
 
-    public function createFromType($type, $entityAlias='t', $class='');
+    public function createFromType($type, $class='');
 }

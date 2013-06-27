@@ -29,9 +29,9 @@ class TableBuilderTest extends \PHPUnit_Framework_TestCase
                 ->expects($this->once())
                 ->method('create')
                 ->with($this->equalTo(array(
-                    'key1'=>array('option1'=>'value1','sort'=>true),
-                    'key2'=>array('sort'=>false,'option1'=>'value1'),
-                    'key3'=>array('type'=>'type','sort'=>true)
+                    'key1'=>array('option1'=>'value1','name'=>'key1'),
+                    'key2'=>array('sort'=>false,'option1'=>'value1','name'=>'key2'),
+                    'key3'=>array('type'=>'type','name'=>'key3')
                 )))
                 ->will($this->returnValue('success'));
         $this->assertEquals('success', $this->tableBuilder->getTable());

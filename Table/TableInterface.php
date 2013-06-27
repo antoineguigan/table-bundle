@@ -12,5 +12,6 @@ namespace Qimnet\TableBundle\Table;
 interface TableInterface
 {
     public function createView(array $headerRendererOptions=array(), $class='');
-    public function getColumnSort($columnName);
+    public function getOptions($columnName);
+    public function has($columnName);
 }

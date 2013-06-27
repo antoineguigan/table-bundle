@@ -33,15 +33,4 @@ class TableTest extends \PHPUnit_Framework_TestCase
                 ->will($this->returnValue('success'));
         $this->assertEquals('success',$table->createView());
     }
-    public function testGetColumnSort()
-    {
-        $table = $this->createTable(array(
-            'column1'=>array('sort'=>true),
-            'column2'=>array('sort'=>false),
-            'column3'=>array('sort'=>'sort_field')
-        ));
-        $this->assertEquals('entity_alias.column1', $table->getColumnSort('column1'));
-        $this->assertEquals(false, $table->getColumnSort('column2'));
-        $this->assertEquals('sort_field', $table->getColumnSort('column3'));
-    }
 }

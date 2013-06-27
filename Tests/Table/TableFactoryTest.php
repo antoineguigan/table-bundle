@@ -24,7 +24,6 @@ class TableFactoryTest extends \PHPUnit_Framework_TestCase
         $this->getMockForAbstractClass('Qimnet\TableBundle\Table\Table', array(
             $this->viewFactory,
             array(),
-            'entity_alias'
         ), $class);
     }
     public function testCreate()
@@ -32,14 +31,12 @@ class TableFactoryTest extends \PHPUnit_Framework_TestCase
         $this->setupClass('table_test_class');
         $this->assertInstanceOf('table_test_class', $this->factory->create(
                 array(),
-                'entity_alias',
                 'table_test_class'));
     }
     public function testCreateWithDefaultClass()
     {
         $this->setupClass('table_default_test_class');
         $this->assertInstanceOf('table_default_test_class', $this->factory->create(
-                array(),
-                'entity_alias'));
+                array()));
     }
 }

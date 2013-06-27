@@ -13,6 +13,5 @@ interface TableFactoryInterface
 {
     public function create(
             array $columns,
-            $entityAlias='t',
             $class='');
 }

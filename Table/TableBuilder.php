@@ -12,22 +12,16 @@ namespace Qimnet\TableBundle\Table;
 class TableBuilder implements TableBuilderInterface
 {
     protected $columns = array();
-    protected $entityAlias='';
     protected $tableFactory;
 
-    public function __construct(
-            TableFactoryInterface $tableFactory,
-            $entityAlias='t')
+    public function __construct(TableFactoryInterface $tableFactory)
     {
-        $this->entityAlias = $entityAlias;
         $this->tableFactory = $tableFactory;
     }
 
     public function add($name, $type=null, $options=array())
     {
-        if (!isset($options['sort'])) {
-            $options['sort'] = true;
-        }
+        $options['name'] = $name;
         if ($type) {
             $options['type'] = $type;
         }
@@ -38,7 +32,7 @@ class TableBuilder implements TableBuilderInterface
 
     public function getTable()
     {
-        return $this->tableFactory->create($this->columns, $this->entityAlias);
+        return $this->tableFactory->create($this->columns);
     }
 
 }

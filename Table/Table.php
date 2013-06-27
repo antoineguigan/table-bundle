@@ -13,14 +13,11 @@ class Table implements TableInterface
 {
     protected $viewFactory;
     protected $columns;
-    protected $entityAlias='';
 
     public function __construct(
             TableViewFactoryInterface $viewFactory,
-            array $columns,
-            $entityAlias='t')
+            array $columns)
     {
-        $this->entityAlias = $entityAlias;
         $this->columns = $columns;
         $this->viewFactory = $viewFactory;
     }
@@ -29,10 +26,12 @@ class Table implements TableInterface
     {
         return $this->viewFactory->create($this->columns, $headerRendererOptions, $class);
     }
-    public function getColumnSort($columnName)
-    {
-        $sort = $this->columns[$columnName]['sort'];
+    public function getOptions($columnName) {
+        return $this->columns[$columnName];
+    }
 
-        return ($sort===true) ? "$this->entityAlias.$columnName" : $sort;
+    public function has($columnName)
+    {
+        return isset($this->columns[$columnName]);
     }
 }
