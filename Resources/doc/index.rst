@@ -76,7 +76,7 @@ of the data.
 If your table type uses external services, or if you want to refer to it by
 alias, you have to declare it as a service :
 
-.. code-block: xml
+.. code-block:: xml
 
     <service id="acme.table.my_table" class="%acme.table.my_table.class%">
         <tag name="qimnet.table.type"/>
