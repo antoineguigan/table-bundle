@@ -46,6 +46,7 @@ class TableView implements TableViewInterface
         $options['column_name'] = $columnName;
         $options['object'] = $object;
         $options['object_vars'] = $objectVars;
+
         return $this->tableRenderer->render($value, $options);
     }
 
@@ -65,6 +66,7 @@ class TableView implements TableViewInterface
     {
         $options = $this->headerRendererOptions;
         $options['column_name'] = $columnName;
+
         return $this->tableRenderer->render($this->getColumnLabel($columnName), $options);
     }
 

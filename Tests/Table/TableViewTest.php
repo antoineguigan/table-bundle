@@ -58,7 +58,6 @@ class TableViewTest extends \PHPUnit_Framework_TestCase
             'column2'=>array()
         ));
 
-
         if ($callsPropertyAccessor) {
             $this->propertyAccessor->expects($this->once())
                     ->method('getValue')
