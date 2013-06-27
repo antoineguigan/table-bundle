@@ -10,7 +10,8 @@ Installation
 Add qimnet/table-bundle to composer.json
 
 
-.. code-block:: js
+.. code-block:: javascript
+
     "require": {
 
         "qimnet/table-bundle": "~1.0@dev",
