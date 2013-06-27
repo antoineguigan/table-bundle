@@ -19,7 +19,8 @@ Add qimnet/table-bundle to composer.json
 
 Add QimnetTableBundle to your application kernel
 
-.. cold-block:: php
+.. code-block:: php
+
     // app/AppKernel.php
     public function registerBundles()
     {
@@ -41,6 +42,7 @@ To define a new table types, implement the ``Qimnet\Table\TableType`` interface.
 Qimnet tables work quite similarily to Symfony forms :
 
 .. code-block: php
+
     <?php
 
     namespace ACME\WebsiteBundle\Table;
@@ -64,7 +66,7 @@ The following column rendering strategies are included in the bundle :
 * **text**
 * **boolean**
 * **date**
-* **link** *(for this strategy, the ``link`` option **MUST** be provided)*
+* **link** (for this strategy, the ``link`` option **MUST** be provided)
 * **translated**
 
 If no strategy is provided, the best strategy is chosen depending on the type
@@ -86,6 +88,7 @@ Rendering data with a table type
 Use the ``qimnet.table.builder.factory`` service to create a table in your controller
 
 .. code-block: php
+
     <?php
     namespace ACME\WebsiteBundle\Controller;
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
