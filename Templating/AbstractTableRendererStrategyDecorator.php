@@ -13,7 +13,7 @@ namespace Qimnet\TableBundle\Templating;
 abstract class AbstractTableRendererStrategyDecorator implements TableRendererStrategyInterface
 {
     private $renderer;
-    public function __construct(TableRenderer $renderer)
+    public function __construct(TableRendererInterface $renderer)
     {
         $this->renderer = $renderer;
     }
