@@ -21,12 +21,13 @@ class TableViewTest extends \PHPUnit_Framework_TestCase
         $this->propertyAccessor = $this->getMock('Symfony\Component\PropertyAccess\PropertyAccessorInterface');
         $this->tableRenderer = $this->getMock('Qimnet\TableBundle\Templating\TableRendererInterface');
     }
-    protected function createTableView(array $columns=array())
+    protected function createTableView(array $columns=array(), array $headerOptions=array())
     {
         return new TableView(
                 $this->propertyAccessor,
                 $this->tableRenderer,
-                $columns);
+                $columns,
+                $headerOptions);
     }
 
     public function testGetColumnNames()
@@ -85,4 +86,20 @@ class TableViewTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Without label', $view->getColumnLabel('without_label'));
     }
 
+    public function testRenderHeader()
+    {
+        $headerOptions = array(
+            'option1'=>'value1'
+        );
+        $view = $this->createTableView(array(
+                'field'=>array('label'=>'label'),
+            ), $headerOptions);
+        $headerOptions['column_name'] = 'field';
+        $this->tableRenderer
+                ->expects($this->once())
+                ->method('render')
+                ->with($this->equalTo('label'), $this->equalTo($headerOptions))
+                ->will($this->returnValue('success'));
+        $this->assertEquals('success', $view->renderHeader('field'));
+    }
 }

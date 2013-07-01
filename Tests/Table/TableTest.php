@@ -33,4 +33,27 @@ class TableTest extends \PHPUnit_Framework_TestCase
                 ->will($this->returnValue('success'));
         $this->assertEquals('success',$table->createView());
     }
+    public function testGetOptions()
+    {
+        $options = array(
+            'key1'=>'value1',
+            'key2'=>'value2'
+        );
+        $table = $this->createTable(array(
+            'field1'=>$options
+        ));
+        $this->assertEquals($options, $table->getOptions('field1'));
+    }
+    public function testHas()
+    {
+        $options = array(
+            'key1'=>'value1',
+            'key2'=>'value2'
+        );
+        $table = $this->createTable(array(
+            'field1'=>$options
+        ));
+        $this->assertTrue($table->has('field1'));
+        $this->assertFalse($table->has('field2'));
+    }
 }
