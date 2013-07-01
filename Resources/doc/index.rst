@@ -56,8 +56,8 @@ Qimnet tables work quite similarily to Symfony forms :
         public function buildTable(TableBuilderInterface $builder)
         {
             $builder
-                    ->add('id','link', array('link'='/some-url')
-                    ->add('username','crud_link')
+                    ->add('id','link', array('link'='/some-url'))
+                    ->add('username')
                     ->add('date');
         }
     }
