@@ -27,8 +27,9 @@ class LinkRendererStrategy extends AbstractTableRendererStrategyDecorator
 
     public function render($value, array $options = array())
     {
-        return '<a href="' . htmlspecialchars($options['link']) . '">' .
-                    $this->renderParent($value, $options) .
-                '</a>';
+        $template = isset($options['template'])
+                ? $options['template']
+                : '<a href="%s">%s</a>';
+        return sprintf($template, htmlspecialchars($options['link']), $this->renderParent($value, $options));
     }
 }
