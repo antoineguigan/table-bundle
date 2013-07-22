@@ -26,7 +26,8 @@ class Table implements TableInterface
     {
         return $this->viewFactory->create($this->columns, $headerRendererOptions, $class);
     }
-    public function getOptions($columnName) {
+    public function getOptions($columnName)
+    {
         return $this->columns[$columnName];
     }
 
